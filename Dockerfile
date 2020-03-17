@@ -25,7 +25,8 @@ MAINTAINER Yegor Bugayenko <yegor256@gmail.com>
 LABEL Description="Squid forward proxy with authorization" Vendor="Yegor Bugayenko" Version="0.1"
 
 # EXPOSE 3128/tcp
-CMD -p $PORT:3128
+# CMD -p $PORT:3128
+CMD -p 443:3128
 
 ENV DEBIAN_FRONTEND=noninteractive
 
