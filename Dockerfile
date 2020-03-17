@@ -24,6 +24,9 @@ FROM heroku/heroku:18
 MAINTAINER Yegor Bugayenko <yegor256@gmail.com>
 LABEL Description="Squid forward proxy with authorization" Vendor="Yegor Bugayenko" Version="0.1"
 
+# EXPOSE 3128/tcp
+CMD -p $PORT:3128
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y
@@ -35,8 +38,7 @@ COPY entry.sh /
 COPY squid.conf /etc/squid/squid.conf
 RUN chmod a+x /entry.sh
 
-# EXPOSE 3128/tcp
-CMD -p $PORT:3128
+
 
 
 ENTRYPOINT ["/entry.sh"]
